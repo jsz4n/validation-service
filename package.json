@@ -1,6 +1,6 @@
 {
   "name": "validation-service",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Microservice to validate data using configurable in code validations",
   "dependencies": {},
   "devDependencies": {},

@@ -6,7 +6,7 @@ To add the service to your stack, add the following snippet to `docker-compose.y
 ```yaml
 services:
   validation:
-    image: semtech/mu-validation-service:0.1.0
+    image: semtech/mu-validation-service:0.2.0
     volumes:
       - ./config/validations:/config
 ```
@@ -25,7 +25,9 @@ Each validation object should have the following properties:
 Note: the application graph is available through `process.env.MU_APPLICATION_GRAPH`.
 
 ## Helper functions
-The validation service provides helpers functions to implement the validate function of a validation rule. Currently the helpers functions listed below are available. They can be imported from `/app/helpers`. E.g. `import { validateSparqlSelect } from '/app/helpers';`
+The validation service provides helpers functions to implement the validate function of a validation rule. Currently the helpers functions listed below are available. They can be imported from `/app/helpers`.
+
+E.g. `import { validateSparqlSelect } from '/app/helpers';`
 
 ### Validations using a SPARQL query
 #### validateSparqlSelect(sparqlQuery)
