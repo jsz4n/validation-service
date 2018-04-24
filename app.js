@@ -4,6 +4,9 @@ import validations from '/config';
 
 /** Run on startup */
 cleanup();
+console.log('=== CONFIGURED VALIDATIONS ===');
+validations.forEach((v, i) => console.log(`[${i+1}] ${v.name}`));
+console.log('===');
 // TODO check if validation names have the required name/description fields
 
 /**
