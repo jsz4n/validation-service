@@ -93,6 +93,17 @@ Parameters:
 
 The function returns a `ValidationError` object with a `uri` property such that the user can enrich the data stored about the validation error afterwards.
 
+#### insertNewErrors(errors)
+Helper function to write multiple validation errors in bulk to the store.
+
+Parameters:
+* errors [array]: Array of validation error objects. Each error object must contain the following properties:
+** executionUri [string]: URI of the execution that produced the validation error
+** validationUri [string]: URI of the validation that failed
+** message [string]: error message of the validation
+
+The function returns an array of `ValidationError` objects with a `uri` property such that the user can enrich the data stored about the validation errors afterwards.
+
 ## API
 ### POST /executions
 Trigger an async execution of a validation set.

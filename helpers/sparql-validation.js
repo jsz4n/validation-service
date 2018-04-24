@@ -1,5 +1,5 @@
 import { query } from 'mu';
-import { insertNewError } from './';
+import { insertNewError, insertNewErrors } from './';
 
 /**
  * Helper function to make a validation rule using a SPARQL SELECT query
@@ -26,12 +26,13 @@ const validateSparqlSelect = function(sparqlQuery) {
         return true;
       } else {
         console.log(`Got ${validationErrors.length} errors for validation ${this.name}`);
-        validationErrors.forEach(async (binding) => {
+        const errors = validationErrors.map((binding) => {
           const params = constructParamsFromResultBinding(binding);
-          const message = typeof(this.message) == 'function' ? this.message() : this.message;
-          const error = await insertNewError(execution.uri, this.uri, message);
-          // TODO add bindings as parameters to the error
+          const message = typeof(this.message) == 'function' ? this.message(params) : this.message;
+          return { executionUri: execution.uri, validationUri: this.uri, message };
         });
+        await insertNewErrors(errors);
+        // TODO add bindings as parameters to the errors
         return false;
       };
     } catch (e) {
