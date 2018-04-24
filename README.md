@@ -20,7 +20,7 @@ Each validation object should have the following properties:
 * name [string]: name of the validation rule
 * description [string]: description of the validation rule
 * validationSets [array[uri]]: list of URIs defining the sets to which the validation rule belongs
-* validate [(execution) => boolean]: function that executes the validation and returns whether the validation succeeded. It receives the current execution as parameter. Validation errors must be written to the store in this function.
+* validate [(execution) => [object]]: function that executes the validation and returns an array of validation errors. An empty array means the validation succeeded. The function receives the current execution as parameter. Validation errors must be written to the store in this function. The helpers functions described below may be of help to implement this function.
 
 Note: the application graph is available through `process.env.MU_APPLICATION_GRAPH`.
 

@@ -31,13 +31,12 @@ const validateSparqlSelect = function(sparqlQuery) {
           const message = typeof(this.message) == 'function' ? this.message(params) : this.message;
           return { executionUri: execution.uri, validationUri: this.uri, message };
         });
-        await insertNewErrors(errors);
         // TODO add bindings as parameters to the errors
-        return false;
+        return await insertNewErrors(errors);
       };
     } catch (e) {
       console.log(`Error during SPARQL select query validation ${this.name}: ${e}`);
-      return false;
+      throw e;
     }
   };
 };
@@ -60,12 +59,12 @@ const validateSparqlAsk = function(sparqlQuery) {
 
       if (!queryResult.boolean) {
         const message = typeof(this.message) == 'function' ? this.message() : this.message;
-        await insertNewError(execution.uri, this.uri, message);      
+        return [await insertNewError(execution.uri, this.uri, message)];
       }
-      return queryResult.boolean;
+      return [];
     } catch (e) {
       console.log(`Error during SPARQL ask query validation ${this.name}: ${e}`);
-      return false;
+      throw e;
     }
   };
 };
