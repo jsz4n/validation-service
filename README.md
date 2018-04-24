@@ -6,7 +6,7 @@ To add the service to your stack, add the following snippet to `docker-compose.y
 ```yaml
 services:
   validation:
-    image: semtech/mu-validation-service:0.2.0
+    image: semtech/mu-validation-service:0.2.1
     volumes:
       - ./config/validations:/config
 ```
@@ -198,9 +198,9 @@ Add the following dispatcher rules in `dispatcher.ex`
   end
 ```
 
-The errors of the latest validation execution of a specific set can be retrieved via
+The latest validation execution of a specific set can be retrieved via
 ```
-GET /validation-executions?sort=-created&filter[status]=done&filter[validation-set]=http://data.lblod.info/id/validation-set/mandatendatabank&page[size]=1&include=errors
+GET /validation-executions?sort=-created&filter[status]=done&filter[validation-set]=http://data.lblod.info/id/validation-set/mandatendatabank&page[size]=1
 ```
 
 ## Development
