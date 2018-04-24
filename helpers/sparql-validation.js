@@ -28,7 +28,7 @@ const validateSparqlSelect = function(sparqlQuery) {
         console.log(`Got ${validationErrors.length} errors for validation ${this.name}`);
         validationErrors.forEach(async (binding) => {
           const params = constructParamsFromResultBinding(binding);
-          const message = this.message(params);
+          const message = typeof(this.message) == 'function' ? this.message() : this.message;
           const error = await insertNewError(execution.uri, this.uri, message);
           // TODO add bindings as parameters to the error
         });
