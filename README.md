@@ -139,6 +139,12 @@ Example
 ## Retrieving executions, validations and errors using mu-cl-resources
 This microservice only provides endpoints (1) to trigger an async execution of a validation set and (2) to monitor the status of a single execution. Endpoints to get all executions, validations and errors should be configured using [mu-cl-resources](https://github.com/mu-semtech/mu-cl-resources).
 
+Add the following prefixes to your `repository.lisp`
+```lisp
+(add-prefix "validation" "http://mu.semte.ch/vocabularies/validation/")
+(add-prefix "dct" "http://purl.org/dc/terms/")
+```
+
 Add the following configuration to your `domain.lisp`
 ```lisp
 (define-resource validation-execution ()
