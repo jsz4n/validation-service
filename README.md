@@ -6,7 +6,7 @@ To add the service to your stack, add the following snippet to `docker-compose.y
 ```yaml
 services:
   validation:
-    image: semtech/mu-validation-service:0.2.1
+    image: semtech/mu-validation-service:0.3.0
     volumes:
       - ./config/validations:/config
 ```
