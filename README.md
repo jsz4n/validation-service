@@ -55,7 +55,7 @@ Example validation:
           ?s a mandaat:Mandataris ;
              mandaat:start ?start ;
              mandaat:einde ?einde .
-          OPTIONAL { ?s mu:uuid ?uuid } 
+          OPTIONAL { ?s mu:uuid ?uuid }
           FILTER (?einde < ?start)
         }`)
   }
@@ -158,7 +158,7 @@ Add the following configuration to your `domain.lisp`
 (define-resource validation ()
   :class (s-prefix "validation:Validation")
   :properties `((:name :string ,(s-prefix "validation:name"))
-                (:description :string ,(s-prefix "validation:description"))                
+                (:description :string ,(s-prefix "validation:description"))
                 (:status :string ,(s-prefix "validation:status")))
   :has-one `((validation-execution :via ,(s-prefix "validation:performsValidation")
                                    :inverse t
@@ -178,7 +178,7 @@ Add the following configuration to your `domain.lisp`
   :has-one `((validation-execution :via ,(s-prefix "validation:producedBy")
                                    :as "execution")
              (validation :via ,(s-prefix "validation:validation")
-                                   :as "validation"))             
+                                   :as "validation"))
   :resource-base (s-url "http://mu.semte.ch/services/validation-service/validation-errors/")
   :features '(include-uri)
   :on-path "validation-errors"
@@ -208,7 +208,7 @@ Add the following snippet to your stack during development:
 ```yaml
 services:
   validation:
-    image: semtech/mu-javascript-template:1.2.0
+    image: semtech/mu-javascript-template:1.3.1
     ports:
       - 8888:80
     environment:
