@@ -1,5 +1,4 @@
-import { query } from 'mu';
-import { insertNewError, insertNewErrors } from './';
+import { insertNewError, insertNewErrors, querySudo as query } from './';
 
 /**
  * Helper function to make a validation rule using a SPARQL SELECT query

@@ -219,6 +219,7 @@ services:
       - 8888:80
     environment:
       NODE_ENV: "development"
+      MU_APPLICATION_GRAPH: "http://mu.semte.ch/graphs/public"
     volumes:
       - /path/to/your/code:/app/
       - ./config/validations:/config
