@@ -2,7 +2,9 @@
   "name": "validation-service",
   "version": "0.3.0",
   "description": "Microservice to validate data using configurable in code validations",
-  "dependencies": {},
+  "dependencies": {
+    "cron": "^1.8.2"
+  },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
