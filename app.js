@@ -1,5 +1,15 @@
 import { app, errorHandler } from 'mu';
 import { insertNewExecution, executionByUuid, cleanup } from './lib/execution';
+
+// adding cron to validation-service
+import { CronJob } from 'cron';
+import {
+  CRON_VALIDATION_ENABLE,
+  VALIDATION_JOB_OPERATION,
+  VALIDATION_URI,
+  CRON_PATTERN_VALIDATION_JOB
+} from "./env-config";
+
 import { validations } from './config';
 
 
