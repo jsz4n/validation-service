@@ -21,6 +21,21 @@ validations.forEach((v, i) => console.log(`[${i+1}] ${v.name}`));
 console.log('===');
 // TODO check if validation names have the required name/description fields
 
+// Creating Cron jobs
+if (CRON_VALIDATION_ENABLE){
+  console.info(`INFO: Validation using cron enable, creating cron job : ${CRON_PATTERN_VALIDATION_JOB}`);
+  new CronJob( CRON_PATTERN_VALIDATION_JOB, async () => {
+    let validationSet = validations;
+    let validationSetUri = VALIDATION_URI;
+    if (validationSetUri){
+      const validationSetId = VALIDATION_URI;
+      validationSet = validations.filter(val => val.validationSets.includes(validationSetId));
+    }
+    const execution = await insertNewExecution(validationSetUri);
+    execution.perform(validationSet); // don't await this call since the validation is performed asynchronously
+  } , null, true);
+}
+
 /**
  * Triggers an async execution for a validation-set
  *
