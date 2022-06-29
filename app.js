@@ -1,6 +1,7 @@
 import { app, errorHandler } from 'mu';
 import { insertNewExecution, executionByUuid, cleanup } from './lib/execution';
-import validations from '/config';
+import { validations } from './config';
+
 
 /** Run on startup */
 cleanup();
