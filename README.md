@@ -25,9 +25,9 @@ Each validation object should have the following properties:
 Note: the application graph is available through `process.env.MU_APPLICATION_GRAPH`.
 
 ## Helper functions
-The validation service provides helpers functions to implement the validate function of a validation rule. Currently the helpers functions listed below are available. They can be imported from `/app/helpers`.
+The validation service provides helpers functions to implement the validate function of a validation rule. Currently the helpers functions listed below are available. They can be imported from `../helpers`.
 
-E.g. `import { validateSparqlSelect } from '/app/helpers';`
+E.g. `import { validateSparqlSelect } from '../helpers';`
 
 ### Validations using a SPARQL query
 #### validateSparqlSelect(sparqlQuery)
