@@ -13,6 +13,23 @@ services:
 
 Don't forget to update the dispatcher configuration to route requests to the validation service.
 
+### Using cron for running validation
+
+In order to use cron for running the validation, add the following environment variables to the `docker-compose.yml`:
+
+```yaml
+services:
+  validation:
+    image: semtech/mu-validation-service:0.3.0
+    volumes:
+      - ./config/validations:/config
+    environment:
+      CRON_VALIDATION_ENABLE: "true"
+      CRON_PATTERN_VALIDATION_JOB: "*/2 * * * *"
+      VALIDATION_URI: "http://my.custom.uri/validations"
+```
+
+
 ## Configuration
 Validations are provided in code as an array of javascript objects exported in `/config/index.js`.
 
